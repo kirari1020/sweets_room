@@ -1,24 +1,40 @@
-# README
+# Sweets room
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## サイト概要
 
-Things you may want to cover:
+スイーツ投稿サイト
 
-* Ruby version
+### サイトテーマ
 
-* System dependencies
+大好きなスイーツをみんなで共有しよう！
 
-* Configuration
+### テーマを選んだ理由
 
-* Database creation
+日本にはまだまだ知られていない美味しいスイーツがあると思うので、スイーツ好きな人たちでどんどん共有していけたらいいなと思ったからです。
 
-* Database initialization
+### ターゲットユーザ
 
-* How to run the test suite
+スイーツ好きな人
 
-* Services (job queues, cache servers, search engines, etc.)
+### 主な利用シーン
 
-* Deployment instructions
+美味しいスイーツを共有したいと思ったときに投稿する
 
-* ...
+
+
+## 設計書
+
+
+
+## チャレンジ要素一覧
+
+https://docs.google.com/spreadsheets/d/1a3QsuhKcjmNibtTXYwdx6fk0ONQ6jChKRfIlncZBnA8/edit?usp=sharing
+
+## 開発環境
+
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JS ライブラリ：jQuery
+- IDE：Cloud9
+
