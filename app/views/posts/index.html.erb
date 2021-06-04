@@ -1,0 +1,13 @@
+<h1>Post List</h1>
+
+<% @posts.each do |post| %>
+<div>
+  <%= link_to post_path(post.id) do %>
+    <%= attachment_image_tag post, :image %>
+  <% end %>
+  <p>Image:<%= image_tag('no_image.jpg') %></p>
+  <p>Title:<%= post.title %></p>
+  <P>Contents:<%= post.body %></P>
+  <P>name:<%= post.user.name %></P>
+</div>
+<% end %>

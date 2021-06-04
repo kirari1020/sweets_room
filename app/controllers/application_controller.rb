@@ -1,6 +1,10 @@
 class ApplicationController < ActionController::Base
-   before_action :configure_permitted_parameters, if: :devise_controller?  #ユーザ登録、ログイン認証などが使われる前に実行
-
+  before_action :configure_permitted_parameters, if: :devise_controller?  #ユーザ登録、ログイン認証などが使われる前に実行
+  
+  def after_sign_in_path_for(resource)
+    posts_path
+  end
+   
   protected
 
   def configure_permitted_parameters
