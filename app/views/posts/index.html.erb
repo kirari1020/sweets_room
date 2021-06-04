@@ -9,5 +9,6 @@
   <p>Title:<%= post.title %></p>
   <P>Contents:<%= post.body %></P>
   <P>name:<%= post.user.name %></P>
+  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
 </div>
 <% end %>
