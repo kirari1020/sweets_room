@@ -9,6 +9,10 @@
     <%= link_to "Edit", edit_post_path(@post) %>
     <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
   <% end %>
+  
+   <!--お気に入りの部分テンプレート-->
+  <p class="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></p>
+  
 </div>
 
 <div class="comments">

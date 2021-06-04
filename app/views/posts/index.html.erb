@@ -10,5 +10,6 @@
   <P>Contents:<%= post.body %></P>
   <P>name:<%= post.user.name %></P>
   <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
+  <p class="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></p>
 </div>
 <% end %>
