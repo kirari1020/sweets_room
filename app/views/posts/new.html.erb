@@ -1,3 +1,5 @@
+<%= render 'layouts/errors', obj: @post %>
+
 <h1>New Post</h1>
 
 <%= form_with model: @post, local:true do |f| %>
@@ -5,9 +7,9 @@
   <h4>Image</h4>
   <%= f.attachment_field :image %>
   <h4>Title</h4>
-  <%= f.text_field :title %>
+  <%= f.text_field :title, placeholder: "タイトルやお店の名前など(20字以内)" %>
   <h4>Contents</h4>
-  <%= f.text_area :body %>
+  <%= f.text_area :body, placeholder: "ここに" %>
   <h4>Tag</h4>
   
   <%= f.submit "Create" %>
