@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   validates :title, length: { in: 1..20 }
-  validates :image, presence: true
+  validates :image_id, presence: true
   validates :body, presence: true
 
   def favorited_by?(user)
