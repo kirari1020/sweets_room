@@ -1,6 +1,7 @@
-<h1>Posts List</h1>
+<div class
+<h1>Ranking</h1>
 
-<% @posts.each do |post| %>
+<% @ranks.each do |post| %>
 <div>
   <%= link_to post_path(post.id) do %>
     <%= attachment_image_tag post, :image %>
@@ -13,4 +14,3 @@
   <p class="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></p>
 </div>
 <% end %>
-<%= paginate @posts %>

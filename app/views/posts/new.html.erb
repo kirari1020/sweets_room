@@ -3,7 +3,8 @@
 <h1>New Post</h1>
 
 <%= form_with model: @post, local:true do |f| %>
-
+  
+  <%= attachment_image_tag @post, :image, :fill, 60, 60, fallback: "no_image.jpg"%>
   <h4>Image</h4>
   <%= f.attachment_field :image %>
   <h4>Title</h4>

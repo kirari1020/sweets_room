@@ -6,7 +6,7 @@ class Post < ApplicationRecord
   has_many :favorites, dependent: :destroy
 
   validates :title, length: { in: 1..20 }  #1字以上20字以内
-  validates :image_id, presence: true
+  validates :image, presence: true
   validates :body, presence: true  #contentsのこと
 
   def favorited_by?(user)

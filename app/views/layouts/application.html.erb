@@ -12,7 +12,10 @@
   <body>
     <% if user_signed_in? %> <!--devise側で用意しているヘルパー-->
       <li>
-        <%= link_to "Post List", posts_path %>
+        <%= link_to "Ranking", post_ranks_path %>
+      </li>
+      <li>
+        <%= link_to "Posts List", posts_path %>
       </li>
       <li>
         <%= link_to "New Post", new_post_path %>

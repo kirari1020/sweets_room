@@ -1,13 +1,17 @@
 class PostsController < ApplicationController
-  
+
   def index
     @posts = Post.page(params[:page]).reverse_order
   end
-  
+
+  def ranks
+    @ranks = Post.find(Favorite.group(:post_id).order('count(post_id) desc').limit(3).pluck(:post_id))
+  end
+
   def new
     @post = Post.new
   end
-  
+
   def create
     @post = Post.new(post_params)
     @post.user_id = current_user.id
@@ -17,16 +21,16 @@ class PostsController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     @post = Post.find(params[:id])
     @comment = Comment.new
   end
-  
+
   def edit
     @post = Post.find(params[:id])
   end
-  
+
   def update
     @post = Post.find(params[:id])
     if @post.update(post_params)
@@ -35,7 +39,7 @@ class PostsController < ApplicationController
       render :edit
     end
   end
-  
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
@@ -45,7 +49,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image_id, :body)
+    params.require(:post).permit(:title, :image, :body)
   end
 
 end
