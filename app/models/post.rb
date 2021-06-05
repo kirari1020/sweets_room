@@ -5,9 +5,9 @@ class Post < ApplicationRecord
   has_many :comments, dependent: :destroy
   has_many :favorites, dependent: :destroy
 
-  validates :title, length: { in: 1..20 }
+  validates :title, length: { in: 1..20 }  #1字以上20字以内
   validates :image_id, presence: true
-  validates :body, presence: true
+  validates :body, presence: true  #contentsのこと
 
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?    #引数で渡されたユーザidがFavoritesテーブル内に存在(exists?)するかどうかを調べる

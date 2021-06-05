@@ -5,10 +5,10 @@
   <%= link_to post_path(post.id) do %>
     <%= attachment_image_tag post, :image %>
   <% end %>
-  <p>Image:<%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+  <p>Profile Image:<%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
   <p>Title:<%= post.title %></p>
   <P>Contents:<%= post.body %></P>
-  <P>name:<%= post.user.name %></P>
+  <P>Name:<%= post.user.name %></P>
   <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
   <p class="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></p>
 </div>
