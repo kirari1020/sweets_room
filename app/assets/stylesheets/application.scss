@@ -16,3 +16,14 @@
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
+
+ .Sweetsroom {
+    font-family: 'Caveat', cursive;
+    font-size: 130%;
+ }
+
+ // /application.html.erbの14行目（サイト全体のフォント指定）
+ .fontname {
+    font-family: 'Quicksand', sans-serif;
+    color: #550000;
+  }

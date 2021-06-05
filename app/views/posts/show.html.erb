@@ -1,7 +1,7 @@
 <%= render 'layouts/errors', obj: @comment %>
 <div class="post-body">
 
-  <%= attachment_image_tag @post, :image %>
+  <%#= attachment_image_tag @post, :image %>
   <p>Title:<%= @post.title %></p>
   <P>Contents:<%= @post.body %></P>
   <P>name:<%= @post.user.name %></P>
