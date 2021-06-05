@@ -1,0 +1,35 @@
+<div class="container container-m">
+<div class="card-deck">
+  <% posts.each do |post| %>
+      <div class="card w-50 mx-1 mt-4 shadow-lg">
+        <%#= link_to post_path(post.id) do %>
+          <%= attachment_image_tag post, :image, :fill, 350, 350 %>
+        <%# end %>
+        <div class="card-body">
+          <div class="row">
+            <div class="col-4">
+              <%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+            </div>
+            <div class="col-8">
+              <p class="card-title">
+                <%= link_to(post_path(post.id), class:"text-dark") do %>
+                  <strong><span><%= post.title %></span></strong>
+                <% end %>
+              </p>
+              <div class="row">
+                <div class="col-6">
+                <span class="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></span>
+                </div>
+                <div class="col-6">
+                <span><%= link_to "コメント #{post.comments.count}", post_path(post.id) %></span>
+                </div>
+              </div>
+            </div>
+            <span><%= post.user.name %></span>
+          </div>
+        </div>
+      </div>
+  <% end %>
+  <%= paginate posts %>
+  </div>
+  </div>

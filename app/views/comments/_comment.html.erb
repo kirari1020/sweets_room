@@ -1,0 +1,11 @@
+<p><%= post.comments.count %>件のコメント</p>
+  <% post.comments.each do |comment| %>
+    <p><%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
+    <%= comment.user.name %>
+    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
+    <% if comment.user == current_user %>
+      <div class="comment-delete">
+        <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete %>
+      </div>
+    <% end %>
+  <% end %>

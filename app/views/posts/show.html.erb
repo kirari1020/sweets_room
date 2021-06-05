@@ -1,7 +1,7 @@
 <%= render 'layouts/errors', obj: @comment %>
 <div class="post-body">
 
-  <%#= attachment_image_tag @post, :image %>
+  <%= attachment_image_tag @post, :image %>
   <p>Title:<%= @post.title %></p>
   <P>Contents:<%= @post.body %></P>
   <P>name:<%= @post.user.name %></P>
@@ -10,25 +10,13 @@
     <%= link_to "Edit", edit_post_path(@post) %>
     <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
   <% end %>
-  
-   <!--お気に入りの部分テンプレート-->
-  <p class="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></p>
-  
-</div>
 
-<div class="comments">
-  <p><%= @post.comments.count %>件のコメント</p>
-  <% @post.comments.each do |comment| %>
-    <p><%= attachment_image_tag comment.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-    <%= comment.user.name %>
-    <%= comment.created_at.strftime('%Y/%m/%d') %><%= comment.comment %>
-    <% if comment.user == current_user %>
-      <div class="comment-delete">
-        <%= link_to "Delete", post_comment_path(comment.post, comment), method: :delete %>
-      </div>
-    <% end %>
-  <% end %>
+  <!--お気に入りの部分テンプレート-->
+  <p class="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></p>
+
 </div>
+<!--コメントの部分テンプレート-->
+<div class="comments"><%= render 'comments/comment', post: @post %></div>
 
 <div class="new-comment">
   <%= form_with(model:[@post,@comment], local: true) do |f| %>
