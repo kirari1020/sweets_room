@@ -1,19 +1,20 @@
 <%= render 'layouts/errors', obj: @comment %>
 <div class="post-body">
-
   <%= attachment_image_tag @post, :image %>
   <p>Title:<%= @post.title %></p>
   <P>Contents:<%= @post.body %></P>
+   <!--タグ表示欄-->
+   Tags:<% @tag_list.each do |tag| %>
+          <span class="btn btn-secondary btn-sm rounded-pill" ><%= tag %></span>
+        <% end %>
   <P>name:<%= @post.user.name %></P>
   <p><%= @post.created_at.strftime('%Y/%m/%d') %></p>
   <% if @post.user == current_user %>
     <%= link_to "Edit", edit_post_path(@post) %>
     <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger" %>
   <% end %>
-
   <!--お気に入りの部分テンプレート-->
   <p class="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></p>
-
 </div>
 <!--コメントの部分テンプレート-->
 <div class="comments"><%= render 'comments/comment', post: @post %></div>

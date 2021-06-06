@@ -2,27 +2,26 @@
 <div class="card-deck">
   <% posts.each do |post| %>
       <div class="card w-50 mx-1 mt-4 shadow-lg">
-        <%#= link_to post_path(post.id) do %>
-          <%= attachment_image_tag post, :image, :fill, 350, 350 %>
-        <%# end %>
+        <%= link_to post_path(post.id) do %>
+          <%= attachment_image_tag post, :image, :fill, 370, 370 %>
+        <% end %>
         <div class="card-body">
           <div class="row">
-            <div class="col-4">
-              <%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+            <div class="col-3">
+              <%= attachment_image_tag post.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", class:"mt-3 rounded-circle"; %>
             </div>
-            <div class="col-8">
+            <div class="col-9">
               <p class="card-title">
                 <%= link_to(post_path(post.id), class:"text-dark") do %>
-                  <strong><span><%= post.title %></span></strong>
+                  <strong><span style="color: #550000;"><%= post.title %></span></strong>
                 <% end %>
               </p>
               <div class="row">
-                <div class="col-6">
-                <span class="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></span>
-                </div>
-                <div class="col-6">
-                <span><%= link_to "コメント #{post.comments.count}", post_path(post.id) %></span>
-                </div>
+                <span class="favorite"><%= render 'favorites/favorite', post: post %></span>
+                <%= link_to(post_path(post.id), class:"comment text-dark") do %>
+                 <span style="color: #550000;">"コメント <%= post.comments.count %></span>
+                <% end %>
+                
               </div>
             </div>
             <span><%= post.user.name %></span>

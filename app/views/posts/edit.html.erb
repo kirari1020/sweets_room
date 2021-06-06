@@ -12,6 +12,7 @@
   <h4>Contents</h4>
   <%= f.text_area :body, placeholder: "ここに" %>
   <h4>Tag</h4>
-  
+  <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control" %>
+
   <%= f.submit "Update" %>
 <% end %>

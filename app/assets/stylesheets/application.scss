@@ -17,6 +17,7 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+// /ヘッダーの文字設定
  .Sweetsroom {
     font-family: 'Caveat', cursive;
     font-size: 130%;
@@ -28,6 +29,17 @@
     color: #550000;
   }
 
- .card-deck {
-    
+ // /application.html.erbの21行目（ハンバーガーメニューの中に[MENU]の文字入力）
+ .MENU {
+    font-size: 50%;
+ }
+
+// /_list.html.erbの20,21行目（いいねとコメントの位置設定）
+ .favorite {
+   margin: 0 0 0 auto;
+ }
+
+ .comment {
+   padding: 0 30px 0 20px;
+   color: #550000;
  }
