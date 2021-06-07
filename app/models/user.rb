@@ -32,7 +32,7 @@ class User < ApplicationRecord
     followings.include?(user)
   end
   
-  # ユーザーの名前検索（部分一致）
+  # [検索方法]　ユーザーの名前（部分一致）
   def self.search_for(content, method)
       User.where('name LIKE ?', '%' + content + '%')
   end
