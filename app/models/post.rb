@@ -14,5 +14,10 @@ class Post < ApplicationRecord
   def favorited_by?(user)
     favorites.where(user_id: user.id).exists?    #引数で渡されたユーザidがFavoritesテーブル内に存在(exists?)するかどうかを調べる
   end
+  
+  	# 投稿のタイトルと内容の検索（部分一致）
+  def self.search_for(content, method)
+      Post.where('title LIKE ? OR body LIKE ?', '%'+content+'%','%'+content+'%')
+  end
 
 end

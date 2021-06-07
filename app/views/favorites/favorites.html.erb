@@ -1,4 +1,4 @@
-<h1>Favorites List</h1>
+<h1 class="text-center pt-5">Favorites List</h1>
 <% if @favorites_list.present? %>
 
   <% @favorites_list.each do |post| %>
@@ -15,6 +15,6 @@
   </div>
   <% end %>
 <% else %>
-  <p>お気に入りはありません</p>
+  <strong><p class="text-center pt-5">" No Favorites "</p></strong>
 <% end %>
 <%= paginate @favorites_list %>

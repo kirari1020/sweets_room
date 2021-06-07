@@ -1,0 +1,8 @@
+<% if @model == 'user' %>
+	<h3 class="text-center pt-5">Users search for "<%= @content %>"</h3>
+  <%= render 'users/list', users: @records %>
+<% elsif @model == 'post' %>
+	<h3 class="text-center pt-5">Posts search for "<%= @content %>"</h3>
+  <%= render 'posts/list', posts: @records %>
+<% end %>
+

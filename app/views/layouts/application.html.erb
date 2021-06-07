@@ -33,6 +33,9 @@
                     <%= link_to "New Post", new_post_path %>
                   </li>
                   <li class="nav-item">
+                    <%= link_to "Users List", users_path %>
+                  </li>
+                  <li class="nav-item">
                     <%= link_to "My Page", user_path(current_user.id) %>
                   </li>
                   <li class="nav-item">
@@ -56,15 +59,24 @@
             </div>
           </div>
         </nav>
+        <% if user_signed_in? %>
+          <div class="search-form float-right pr-3 pt-3 ">
+            <%= form_with url: search_path, method: :get, local: true do |f| %>
+              <%= f.select :model, options_for_select({ "User" => "user", "Post" => "post" }) %>
+              <%= f.text_field :content %>
+              <%= f.submit '検索' %>
+            <% end %>
+          </div>
+        <% end %>
       </header>
       <main class="mb-auto">
       <%= yield %>
       </main>
-        <footer class="footer">
+        <footer class="footer" style="background-color: #FFE4C4;">
           <div class='container mt-5'>
             <div class='row'>
               <div class='mx-auto'>
-                <p>CopyRight 2021 Sweets room.inc</p>
+                <p class="pt-3">CopyRight 2021 Sweets room.inc</p>
               </div>
             </div>
           </div>

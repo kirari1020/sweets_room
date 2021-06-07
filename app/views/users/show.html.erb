@@ -1,5 +1,7 @@
 <div class="profile-container">
-  <h4 class="profile-name">Name：<%= @user.name %></h4>
+  <h4 class="profile-name">
+    <h1 class="text-center pt-5">My Page</h1>
+  Name：<%= @user.name %></h4>
   <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
   Profile：<%= @user.profile %>
   </br>
