@@ -1,28 +1,29 @@
-<div class="profile-container">
-  <h4 class="profile-name">
-    <h1 class="text-center pt-5">My Page</h1>
-  Name：<%= @user.name %></h4>
-  <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
-  Profile：<%= @user.profile %>
-  </br>
-  <th>favorites</th>
-  <th><%= link_to @user.favorites.count, post_favorites_path(@user) %></th>
+<h1 class="text-center pt-5">Profile</h1>
+  <div class="profile-container w-50 mx-auto border-bottom py-5">
+    <div class="row">
+      <div class="col-4">
+        <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "no_image.jpg", class:"rounded-circle"; %>
+      </div>
+      <div class="col-6">
+        Name <h1 class="ml-1 p-3"><%= @user.name %></h1>
+        Profile <div class="border ml-1 p-3"><%= @user.profile %></div>
+      </div>
+    </div>
+    <div class ="text-center pt-4">
+      favorites <%= link_to @user.favorites.count, post_favorites_path(@user), class: "pr-5" %>
+      follows <%= link_to @user.followings.count, user_followings_path(@user), class: "pr-5" %>
+      followers <%= link_to @user.followers.count, user_followers_path(@user), class: "pr-5"%>
+      <% if @user.id == current_user.id %>
+        <%= link_to "Edit", edit_user_path(@user), class: "float-right btn btn-outline-info rounded-pill" %>
+      <% else %>
+        <% if current_user.following?(@user) %>
+          <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-secondary btn-sm rounded-pill" %>
+        <% else %>
+          <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-info btn-sm rounded-pill" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
 
-  <th>follows</th>
-  <th><%= link_to @user.followings.count, user_followings_path(@user) %></th>
-
-  <th>followers</th>
-  <th><%= link_to @user.followers.count, user_followers_path(@user) %></th>
-
-  <% if @user.id == current_user.id %>
-    <p><%= link_to "Edit", edit_user_path(@user) %></p>
-  <% else %>
-    <% if current_user.following?(@user) %>
-      <%= link_to "フォロー外す", user_relationships_path(@user.id), method: :delete, class: "btn btn-info btn-sm" %>
-    <% else %>
-      <%= link_to "フォローする", user_relationships_path(@user.id), method: :post, class: "btn btn-sm btn-success" %>
-    <% end %>
-  <% end %>
-</div>
 <!--投稿一覧の部分テンプレート-->
 <%= render 'posts/list', posts: @posts %>
