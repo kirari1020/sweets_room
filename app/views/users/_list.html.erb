@@ -1,7 +1,7 @@
-<div class="container">
+<div class="container pt-3">
   <div class="row">
-    <table class='table'>
-      <thead>
+    <table class="table">
+       <thead class="table-warning">
         <tr>
           <th>Image</th>
           <th>Name</th>
@@ -13,8 +13,8 @@
       <tbody>
         <% users.each do |user| %>
           <tr>
-            <td><%= attachment_image_tag user, :profile_image, size: "70x70", fallback: "no_image.jpg", class:"rounded-circle"; %></td>
-            <td><%= user.name %></td>
+            <td><%= attachment_image_tag user, :profile_image, size: "85x85", fallback: "no_image.jpg", class:"rounded-circle"; %></td>
+            <td><strong><%= user.name %></strong></td>
             <td class="text-break w-10" style="width: 30rem;"><%= user.profile %></td>
              <td>
              <% if user.id != current_user.id %>
@@ -26,8 +26,6 @@
              <% end %>
              </td>
             <td><%= link_to 'Show', user_path(user.id), class: "user_#{user.id}" %></td>
-            <td></td>
-            <td></td>
           </tr>
         <% end %>
       </tbody>
