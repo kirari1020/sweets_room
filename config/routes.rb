@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   devise_for :users
   resources :posts do
     resource :favorites, only: [:create, :destroy]
-    get 'favorites' => 'favorites#favorites'
     resources :comments, only: [:create, :destroy]
   end
 
@@ -14,6 +13,7 @@ Rails.application.routes.draw do
     resource :relationships, only: [:create, :destroy]
     get 'followings' => 'relationships#followings', as: 'followings'
     get 'followers' => 'relationships#followers', as: 'followers'
+    get 'favorites' => 'favorites#favorites'
   end
 
 end

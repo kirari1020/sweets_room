@@ -10,7 +10,7 @@
       </div>
     </div>
     <div class ="text-center pt-4">
-      favorites <%= link_to @user.favorites.count, post_favorites_path(@user), class: "pr-5" %>
+      favorites <%= link_to @user.favorites.count, user_favorites_path(@user), class: "pr-5" %>
       follows <%= link_to @user.followings.count, user_followings_path(@user), class: "pr-5" %>
       followers <%= link_to @user.followers.count, user_followers_path(@user), class: "pr-5"%>
       <% if @user.id == current_user.id %>
