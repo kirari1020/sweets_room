@@ -57,11 +57,11 @@
           </div>
         </nav>
         <% if user_signed_in? %>
-          <div class="search-form float-right pr-3 pt-3 ">
+          <div class="form-inline float-right pt-2 mr-5">
             <%= form_with url: search_path, method: :get, local: true do |f| %>
               <%= f.select :model, options_for_select({ "User" => "user", "Post" => "post" }) %>
-              <%= f.text_field :content %>
-              <%= f.submit '検索' %>
+              <%= f.text_field :content, class:"form-control ",placeholder: "Search" %>
+              <%= f.submit '検索', class:"btn btn-outline-success" %>
             <% end %>
           </div>
         <% end %>
