@@ -8,7 +8,7 @@
           <label for="inputName">Name</label>
           <%= f.text_field :name, autofocus: true, class:"form-control mb-2", id:"inputName", placeholder:"名前をここに(20字以内)"%>
           <label for="inputName">Profile Image</label><br>
-          <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg", class:" rounded-circle" %>
+          <%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "noimage.3.jpg", class:" rounded-circle" %>
           <div class="input-group my-3">
             <label>
             <%= f.attachment_field :profile_image, placeholder: "プロフィール画像", class: "w-100" %>

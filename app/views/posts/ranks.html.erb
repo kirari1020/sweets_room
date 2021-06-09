@@ -1,20 +1,36 @@
-
 <h1 class="text-center pt-5">Ranking</h1>
-
-No.1
-No.2
-No.3
-
-<% @ranks.each do |post| %>
-<div>
-  <%= link_to post_path(post.id) do %>
-    <%= attachment_image_tag post, :image %>
-  <% end %>
-  <p>Profile Image:<%= attachment_image_tag post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></p>
-  <p>Title:<%= post.title %></p>
-  <P>Contents:<%= post.body %></P>
-  <P>Name:<%= post.user.name %></P>
-  <p><%= link_to "#{post.comments.count} コメント", post_path(post.id) %></p>
-  <p class="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></p>
+<!--ランキング画像 -->
+<div class="image text-center">
+    <%= image_tag 'no.1.png', :size =>'320x100', class:"mx-4" %>
+    <%= image_tag 'no.2.png', :size =>'320x100',class:"mx-4" %>
+    <%= image_tag 'no.3.png', :size =>'320x100',class:"mx-4" %>
 </div>
-<% end %>
+<div class="container container-m">
+  <div class="card-deck">
+    <% @ranks.each do |post| %>
+      <div class="row">
+        <div class="card m-4 shadow-lg">
+          <%= link_to post_path(post.id) do %>
+            <%= attachment_image_tag post, :image, :fill, 360, 360 %>
+          <% end %>
+          <div class="card-body">
+            <div class="card-title text-center">
+              <%= link_to(post_path(post.id), class:"text-dark") do %>
+                <span style="color: #550000;"><strong><%= post.title %></strong></span>
+              <% end %>
+            </div>
+            <%= attachment_image_tag post.user, :profile_image, :fill, 80, 80, fallback: "noimage.3.jpg", class:"mr-2 rounded-circle"; %>
+            <span><%= post.user.name %></span>
+            <div class="card-text pl-3 pt-2">
+              <%= render 'favorites/favorite', post: post %>
+              <%= link_to(post_path(post.id), class:"comment text-dark pl-2 pr-5") do %>
+                <span style="color: #550000;">コメント <%= post.comments.count %></span>
+              <% end %>
+              <%= post.created_at.strftime('%Y/%m/%d') %>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+   </div>
+</div>

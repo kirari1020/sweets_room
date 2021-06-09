@@ -12,7 +12,7 @@
                 <span style="color: #550000;"><strong><%= post.title %></strong></span>
               <% end %>
             </div>
-            <%= attachment_image_tag post.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", class:"mr-2 rounded-circle"; %>
+            <%= attachment_image_tag post.user, :profile_image, :fill, 80, 80, fallback: "noimage.3.jpg", class:"mr-2 rounded-circle"; %>
             <span><%= post.user.name %></span>
             <div class="card-text pl-3 pt-2">
               <%= render 'favorites/favorite', post: post %>
