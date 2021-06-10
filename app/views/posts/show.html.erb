@@ -1,7 +1,6 @@
 <div class ="pt-5"></div>
 <div class="container">
   <div class="row">
-    <div id="comments_error"><%= render 'layouts/errors', obj: @comment %></div>
     <div class="card w-50 mx-auto mt-4 shadow-lg">
       <%= attachment_image_tag @post, :image %>
       <div class="card-body">
@@ -17,12 +16,12 @@
               <strong><%= @post.title %></strong>
             </p>
             <!--お気に入りの部分テンプレート-->
-            <div>
-              <td class="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></td>
-              <td class="comments-count">コメント <%= @post.comments.count %></td>
+            <div class="d-flex">
+              <div id="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></div>
+              <div class="comments-count">コメント <%= @post.comments.count %></div>
               <% if @post.user == current_user %>
+                <%= link_to "Edit", edit_post_path(@post),class: "btn btn-sm btn-info ml-5" %>
                 <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger float-right ml-3" %>
-                <%= link_to "Edit", edit_post_path(@post),class: "btn btn-sm btn-info float-right" %>
               <% end %>
             </div>
           </div>
@@ -45,6 +44,7 @@
         <hr>
         <%= form_with model:[@post,@comment] do |f| %>
           <div class="form-group">
+            <div id="comments_error"><%= render 'layouts/errors', obj: @comment %></div>
             <label for="exampleFormControlTextarea1">コメントする</label>
             <%= f.text_area :comment, rows:'5',class: "form-control",placeholder: "コメントをここに(200字以内)" %>
           </div>
