@@ -14,10 +14,10 @@
             </div>
             <%= attachment_image_tag post.user, :profile_image, :fill, 80, 80, fallback: "noimage.3.jpg", class:"mr-2 rounded-circle"; %>
             <span><%= post.user.name %></span>
-            <div class="card-text pl-3 pt-2">
-              <%= render 'favorites/favorite', post: post %>
+            <div class="card-text pl-3 pt-2 d-flex">
+              <div id="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></div>
               <%= link_to(post_path(post.id), class:"comment text-dark pl-2 pr-5") do %>
-                <span style="color: #550000;">コメント <%= post.comments.count %></span>
+                <div class="comments-count"><span style="color: #550000;">コメント <%= post.comments.count %></span></div>
               <% end %>
               <%= post.created_at.strftime('%Y/%m/%d') %>
             </div>

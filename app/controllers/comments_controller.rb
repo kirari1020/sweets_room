@@ -4,16 +4,16 @@ class CommentsController < ApplicationController
     @post = Post.find(params[:post_id])
     @comment = current_user.comments.new(comment_params)
     @comment.post_id = @post.id
-    if @comment.save
-      redirect_to post_path(@post)
-    else
-      render "posts/show"
+    unless @comment.save
+      render 'error'  # app/views/comments/error.js.erbを参照する
     end
+     # app/views/comments/create.js.erbを参照する
   end
 
   def destroy
+    @post = Post.find(params[:post_id])
     Comment.find_by(id: params[:id], post_id: params[:post_id]).destroy
-    redirect_to post_path(params[:post_id])
+    # app/views/comments/destroy.js.erbを参照する
   end
 
   private
