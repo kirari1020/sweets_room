@@ -34,19 +34,21 @@
     font-size: 50%;
  }
 
- /*ページネーション自体のデザイン*/
-.pagination>li>a {
-  border: none;     /*枠線をなくす*/
-  color: #696969;   /*文字の色を変える*/
-}
+ .li {
+    list-style: none;
+ }
 
-/* 表示しているページ番号のデザイン */
-.pagination>.active>a {
-  background: #BBFFFF;     /*背景の色を変える*/
-  border-radius: 15px;     /*角を丸くする*/
-}
+ // /kaminariのレイアウト
+ .pagination {
+    justify-content: center;  /*kaminari中央寄せ*/
+ }
 
-/*ホバー時のデザイン*/
-.pagination>li>a:hover {
-  border-radius: 15px;    /*角を丸くする*/
-}
+ .pagination>li>a {
+    border: none;  /*kaminariの枠線無くす*/
+    color: #696969;   /*文字の色を変える*/
+    background: #DCDCDC;  /*背景色変更*/
+ }
+
+ .pagination>li>a:hover {
+    background: #A9A9A9;  /*kaminariのページボタンにカーソル合した時に変わる色*/
+ }
