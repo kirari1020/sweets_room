@@ -18,7 +18,7 @@
             <!--お気に入りの部分テンプレート-->
             <div class="d-flex">
               <div id="favorite_<%= @post.id %>"><%= render 'favorites/favorite', post: @post %></div>
-              <div class="comments-count">コメント <%= @post.comments.count %></div>
+              <div class="comments-count" style="padding-left: 20px;"><i class="far fa-comment"></i> <%= @post.comments.count %></div>
               <% if @post.user == current_user %>
                 <%= link_to "Edit", edit_post_path(@post),class: "btn btn-sm btn-info ml-5" %>
                 <%= link_to "Delete", post_path(@post), method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger float-right ml-3" %>
@@ -31,7 +31,7 @@
         </div>
         <div class="col-12">
           <!--タグ表示欄-->
-          Tags：<% @tag_list.each do |tag| %>
+          <i class="fas fa-tags"></i> <% @tag_list.each do |tag| %>
                   <span class="btn btn-secondary btn-sm rounded-pill" ><%= tag %></span>
                 <% end %>
           <p class="text-right"><%= @post.created_at.strftime('%Y/%m/%d') %></p>
