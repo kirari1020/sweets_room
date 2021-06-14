@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :correct_user,only: [:edit]  #URLの直打ち禁止
 
   def index
     @users = User.page(params[:page]).reverse_order
@@ -19,6 +20,13 @@ class UsersController < ApplicationController
       redirect_to user_path(@user.id)
     else
       render :edit
+    end
+  end
+  
+  def correct_user   #URLの直打ち禁止
+        @user = User.find(params[:id])
+    unless @user.id == current_user.id
+      redirect_to users_path
     end
   end
 

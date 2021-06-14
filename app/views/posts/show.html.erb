@@ -32,7 +32,7 @@
         <div class="col-12">
           <!--タグ表示欄-->
           <i class="fas fa-tags"></i> <% @tag_list.each do |tag| %>
-                  <span class="btn btn-secondary btn-sm rounded-pill" ><%= tag %></span>
+                  <span class="btn btn-secondary btn-sm rounded-pill" ><%= link_to tag, posts_path(tag_name: tag), class: "text-white" %></span>
                 <% end %>
           <p class="text-right"><%= @post.created_at.strftime('%Y/%m/%d') %></p>
         </div>

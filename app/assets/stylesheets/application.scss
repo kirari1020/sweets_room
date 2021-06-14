@@ -17,6 +17,10 @@
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
 
+ li {
+  list-style-type: none;
+ }
+
 // /ヘッダーの文字設定
  .Sweetsroom {
     font-family: 'Caveat', cursive;
@@ -32,10 +36,6 @@
  // /application.html.erbの21行目（ハンバーガーメニューの中に[MENU]の文字入力）
  .MENU {
     font-size: 50%;
- }
-
- .li {
-    list-style: none;
  }
 
  // /kaminariのレイアウト

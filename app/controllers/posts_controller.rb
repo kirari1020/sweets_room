@@ -1,7 +1,12 @@
 class PostsController < ApplicationController
+  before_action :correct_post,only: [:edit]  #URLの直打ち禁止
 
   def index
     @posts = Post.page(params[:page]).reverse_order
+
+    if params[:tag_name]
+      @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order
+    end
   end
 
   def ranks
@@ -49,6 +54,13 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
+  end
+  
+  def correct_post   #URLの直打ち禁止
+        @post = Post.find(params[:id])
+    unless @post.user.id == current_user.id
+      redirect_to posts_path
+    end
   end
 
   private
