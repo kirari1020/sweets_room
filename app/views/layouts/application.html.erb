@@ -22,34 +22,35 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
+                <i class="fas fa-clipboard-list fa-lg m-2"></i>
                 <% if user_signed_in? %> <!--devise側で用意しているヘルパー-->
                   <li class="nav-item">
-                    <%= link_to "Ranking", post_ranks_path %>
+                    <%= link_to "Ranking", post_ranks_path, class:"nav-link" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "Posts List", posts_path %>
+                    <%= link_to "PostsList", posts_path, class:"nav-link" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "New Post", new_post_path %>
+                    <%= link_to "NewPost", new_post_path, class:"nav-link" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "Users List", users_path %>
+                    <%= link_to "UsersList", users_path, class:"nav-link" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "My Page", user_path(current_user.id) %>
+                    <%= link_to "MyPage", user_path(current_user.id), class:"nav-link" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "Log out", destroy_user_session_path, method: :delete %>
+                    <%= link_to "Logout", destroy_user_session_path, method: :delete, class:"nav-link" %>
                   </li>
                 <% else %>
                   <li class="nav-item">
-                    <%= link_to "Top", root_path %>
+                    <%= link_to "Top", root_path, class:"nav-link" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "Sign up", new_user_registration_path %>
+                    <%= link_to "Signup", new_user_registration_path, class:"nav-link" %>
                   </li>
                   <li class="nav-item">
-                    <%= link_to "Log in", new_user_session_path %>
+                    <%= link_to "Login", new_user_session_path, class:"nav-link" %>
                   </li>
                 <% end %>
               </ul>
@@ -60,11 +61,13 @@
         <div class="form-inline w-100">
           <div class="mr-5 mt-2 w-100">
             <%= form_with url: search_path, method: :get, local: true do |f| %>
-              <div class="d-flex justify-content-end">
+              <div class="d-flex justify-content-end">  <!--右寄せにするための記述-->
                 <div class="d-flex">
                   <%= f.select :model, options_for_select({ "User" => "user", "Post" => "post" }) %>
                   <%= f.text_field :content, class:"form-control ml-1",placeholder: "Search" %>
-                  <%= f.submit '検索', class:"btn btn-outline-success" %>
+                  <%= button_tag type: 'submit', class: 'btn btn-sm btn-info' do %>
+                    <i class="fas fa-search"></i>
+                  <% end %>
                 </div>
               </div>
             <% end %>
