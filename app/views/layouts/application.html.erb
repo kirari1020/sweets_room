@@ -11,11 +11,10 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
   <body class="d-flex flex-column vh-100 ">
     <div class="fontname">
-      <header class="shadow-sm" style="background-color: #FFE4C4;">
-        <nav class="navbar navbar-expand-lg navbar-light">
+      <header >
+        <nav class="shadow-sm navbar navbar-expand-lg navbar-light" style="background-color: #FFE4C4;">
           <div class="container">
             <a class="navbar-brand p-1" href="/"><%= image_tag 'cake.png', size: '80x80' %><span class="Sweetsroom">Sweets room</span></a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -58,13 +57,19 @@
           </div>
         </nav>
         <% if user_signed_in? %>
-          <div class="form-inline float-right pt-2 mr-5">
+        <div class="form-inline w-100">
+          <div class="mr-5 mt-2 w-100">
             <%= form_with url: search_path, method: :get, local: true do |f| %>
-              <%= f.select :model, options_for_select({ "User" => "user", "Post" => "post" }) %>
-              <%= f.text_field :content, class:"form-control ",placeholder: "Search" %>
-              <%= f.submit '検索', class:"btn btn-outline-success" %>
+              <div class="d-flex justify-content-end">
+                <div class="d-flex">
+                  <%= f.select :model, options_for_select({ "User" => "user", "Post" => "post" }) %>
+                  <%= f.text_field :content, class:"form-control ml-1",placeholder: "Search" %>
+                  <%= f.submit '検索', class:"btn btn-outline-success" %>
+                </div>
+              </div>
             <% end %>
           </div>
+        </div>
         <% end %>
       </header>
       <main class="mb-auto">
