@@ -22,16 +22,18 @@ class User < ApplicationRecord
 
   def follow(user_id)
     relationships.create(following_id: user_id)
+    return user = User.find(user_id)
   end
 
   def unfollow(user_id)
     relationships.find_by(following_id: user_id).destroy
+    return user = User.find(user_id)
   end
 
   def following?(user)
     followings.include?(user)
   end
-  
+
   # [検索方法]　ユーザーの名前（部分一致）
   def self.search_for(content, method)
       User.where('name LIKE ?', '%' + content + '%')

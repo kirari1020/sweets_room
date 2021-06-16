@@ -1,41 +1,33 @@
-<div class="container pt-3">
-  <div class="row">
-    <table class="table">
-       <thead class="table-warning">
-        <tr>
-          <th>Image</th>
-          <th>Name</th>
-          <th>Profile</th>
-          <th></th>
-          <th colspan="4"></th>
-        </tr>
-      </thead>
-      <tbody>
-        <% users.each do |user| %>
-          <tr>
-            <td>
-              <%= link_to user_path(user.id) do %>
-                <%= attachment_image_tag user, :profile_image, size: "85x85", fallback: "noimage.3.jpg", class:"rounded-circle"; %>
-              <% end %>
-            </td>
-            <td>
-              <%= link_to user_path(user.id), class: "text-dark" do %>
-                <strong style="color: #550000;"><%= user.name %></strong>
-              <% end %>
-            </td>
-            <td class="text-break w-10" style="width: 30rem;"><%= user.profile %></td>
-            <td>
-             <% if user.id != current_user.id %>
-               <% if current_user.following?(user) %>
-                <%= link_to "フォロー外す", user_relationships_path(user.id), method: :delete, class: "btn btn-secondary btn-sm rounded-pill" %>
-               <% else %>
-                <%= link_to "フォローする", user_relationships_path(user.id), method: :post, class: "btn btn-info btn-sm rounded-pill" %>
-               <% end %>
-             <% end %>
-            </td>
-        <% end %>
-      </tbody>
-    </table>
-    <%= paginate users %>
- </div>
-</div>
+<table class="table">
+  <thead class="table-warning">
+    <tr>
+      <th>Image</th>
+      <th>Name</th>
+      <th>Profile</th>
+      <th></th>
+      <th colspan="4"></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% users.each do |user| %>
+      <tr>
+        <td>
+          <%= link_to user_path(user.id) do %>
+            <%= attachment_image_tag user, :profile_image, size: "85x85", fallback: "noimage.3.jpg", class:"rounded-circle"; %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to user_path(user.id), class: "text-dark" do %>
+            <strong style="color: #550000;"><%= user.name %></strong>
+          <% end %>
+        </td>
+        <td class="text-break w-10" style="width: 30rem;"><%= user.profile %></td>
+        <td>
+          <% if user.id != current_user.id %>
+            <!--フォローボタン部分テンプレート-->
+            <div id="follow-btn"><%= render 'relationships/follow-btn', user: user %></div>
+          <% end %>
+        </td>
+    <% end %>
+  </tbody>
+</table>

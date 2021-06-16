@@ -1,3 +1,7 @@
 <h1 class="text-center pt-5">Users List</h1>
-
-<%= render 'users/list', users: @users %>
+<div class="container pt-3">
+  <div class="row">
+    <%= render 'users/list', users: @users %>
+    <%= paginate @users %>
+ </div>
+</div>
