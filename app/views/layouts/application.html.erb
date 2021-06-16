@@ -22,7 +22,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
               <ul class="navbar-nav ml-auto">
-                <i class="fas fa-clipboard-list fa-lg m-2"></i>
+                <i class="fas fa-clipboard-list fa-lg m-2"></i>  <!--ヘッダーのリンク一覧の前にあるイラスト-->
                 <% if user_signed_in? %> <!--devise側で用意しているヘルパー-->
                   <li class="nav-item">
                     <%= link_to "Ranking", post_ranks_path, class:"nav-link" %>
@@ -57,7 +57,7 @@
             </div>
           </div>
         </nav>
-        <% if user_signed_in? %>
+        <% if user_signed_in? %>  <!--検索機能-->
         <div class="form-inline w-100">
           <div class="mr-5 mt-2 w-100">
             <%= form_with url: search_path, method: :get, local: true do |f| %>
