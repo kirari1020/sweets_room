@@ -9,7 +9,11 @@
       <strong>Name</strong><h2 class="text-break ml-1 p-3"><%= @user.name %></h2>
       <strong>Profile</strong>
       <div class="ml-1 p-3">
-        <%#=safe_join(@user.profile.split("\n"),tag(:br))%>  <!--この記述によって改行やスペースが表示できる-->
+        <%if @user.profile.nil? %>    <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+          <%=@user.profile%>
+        <% else %>
+          <%=safe_join(@user.profile.split("\n"),tag(:br))%>  <!--この記述によって改行やスペースが表示できる-->
+        <% end %>
       </div>
     </div>
   </div>
