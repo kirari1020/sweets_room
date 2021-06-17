@@ -23,6 +23,7 @@ class User < ApplicationRecord
   def follow(user_id)
     relationships.create(following_id: user_id)
     return user = User.find(user_id)
+    
   end
 
   def unfollow(user_id)

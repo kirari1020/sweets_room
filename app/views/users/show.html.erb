@@ -3,20 +3,23 @@
   <div class="row">
     <div class="col-md-1"></div>
     <div class="col-12 col-md-4">
-      <%= attachment_image_tag @user, :profile_image, :fill, 200, 200, format: 'jpeg', fallback: "noimage.3.jpg", class:"rounded-circle"; %>
+      <%= attachment_image_tag @user, :profile_image,  size: "200x200", format: 'jpeg', fallback: "noimage.3.jpg", class:"rounded-circle"; %>
     </div>
     <div class="col-12 col-md-7">
-      Name <h1 class="ml-1 p-3"><%= @user.name %></h1>
-      Profile <div class="border ml-1 p-3"><%= @user.profile %></div>
+      <strong>Name</strong><h2 class="text-break ml-1 p-3"><%= @user.name %></h2>
+      <strong>Profile</strong>
+      <div class="ml-1 p-3">
+        <%#=safe_join(@user.profile.split("\n"),tag(:br))%>  <!--この記述によって改行やスペースが表示できる-->
+      </div>
     </div>
   </div>
   <div class="row">
     <div class="col-1 col-md-2"></div>
     <div class="col-7 col-md-9">
-      <div class ="d-flex justify-content-center pt-3">
-        favorites <%= link_to @user.favorites.count, user_favorites_path(@user), class: "pr-5" %>
-        follows <%= link_to @user.followings.count, user_followings_path(@user), class: "pr-5" %>
-        followers <%= link_to @user.followers.count, user_followers_path(@user), class: "pr-5"%>
+      <div class ="d-flex flex-wrap justify-content-center pt-3">
+        <div>favorites <%= link_to @user.favorites.count, user_favorites_path(@user), class: "pr-5" %></div>
+        <div>follows <%= link_to @user.followings.count, user_followings_path(@user), class: "pr-5" %></div>
+        <div>followers <%= link_to @user.followers.count, user_followers_path(@user), class: "pr-5"%></div>
         <% if @user.id == current_user.id %>
           <%= link_to "Edit", edit_user_path(@user), class: "float-right btn btn-outline-info rounded-pill" %>
         <% else %>
