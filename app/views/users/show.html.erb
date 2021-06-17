@@ -28,7 +28,7 @@
           <%= link_to "Edit", edit_user_path(@user), class: "float-right btn btn-outline-info rounded-pill" %>
         <% else %>
           <!--フォローボタン部分テンプレート-->
-          <div id="follow-btn"><%= render 'relationships/follow-btn', user: @user %></div>
+          <div id="follow-btn_<%= @user.id %>"><%= render 'relationships/follow-btn', user: @user %></div>
         <% end %>
       </div>
     </div>

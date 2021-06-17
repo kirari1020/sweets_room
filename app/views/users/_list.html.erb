@@ -25,7 +25,7 @@
         <td>
           <% if user.id != current_user.id %>
             <!--フォローボタン部分テンプレート-->
-            <div id="follow-btn"><%= render 'relationships/follow-btn', user: user %></div>
+            <div id="follow-btn_<%= user.id %>"><%= render 'relationships/follow-btn', user: user %></div>
           <% end %>
         </td>
       </tr>

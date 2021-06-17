@@ -1,11 +1,10 @@
 ja:
   activerecord:
-    # 追加
+  
     attributes:
       post:
         body: contents
-    # ここまで
-ja:
+    
   views:
     pagination:
       first:

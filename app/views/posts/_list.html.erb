@@ -2,7 +2,7 @@
   <div class="row">
     <% posts.each do |post| %>
       <div class="col-12 col-sm-8 col-md-6 col-lg-4 px-0">
-        <div class="card m-4 shadow-lg">
+        <div class="card m-3 shadow-lg">
           <%= link_to post_path(post.id) do %>
             <%= attachment_image_tag post, :image, :fill, 360, 360, width: "100%", height: "300" %>
           <% end %>
