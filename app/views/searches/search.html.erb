@@ -1,6 +1,10 @@
 <% if @model == 'user' %>
-	<h3 class="text-center pt-5">Users search for "<%= @content %>"</h3>
-  <%= render 'users/list', users: @records %>
+  <h3 class="text-center pt-5">Users search for "<%= @content %>"</h3>
+  <div class="container pt-3">
+    <div class="row">
+      <%= render 'users/list', users: @records %>
+    </div>
+  </div>
 <% elsif @model == 'post' %>
 	<h3 class="text-center pt-5">Posts search for "<%= @content %>"</h3>
   <%= render 'posts/list', posts: @records %>
