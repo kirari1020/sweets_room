@@ -21,7 +21,13 @@
               <strong style="color: #550000;"><%= user.name %></strong>
             <% end %>
           </td>
-          <td><%= user.profile %></td>
+          <td>
+            <% if user.profile.nil? %>    <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+              <%= user.profile %>
+            <% else %>
+              <%= safe_join(user.profile.split("\n"),tag(:br)) %>  <!--この記述によって改行やスペースが表示できる-->
+            <% end %>
+          </td>
           <td>
             <% if user.id != current_user.id %>
               <!--フォローボタン部分テンプレート-->
