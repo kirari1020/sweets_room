@@ -1,35 +1,35 @@
 <div class="table-responsive">
-<table class="table text-nowrap">
-  <thead class="table-warning">
-    <tr>
-      <th>Image</th>
-      <th>Name</th>
-      <th>Profile</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-    <% users.each do |user| %>
+  <table class="table text-nowrap">
+    <thead class="table-warning">
       <tr>
-        <td>
-          <%= link_to user_path(user.id) do %>
-            <%= attachment_image_tag user, :profile_image, size: "85x85", fallback: "noimage.3.jpg", class:"rounded-circle"; %>
-          <% end %>
-        </td>
-        <td>
-          <%= link_to user_path(user.id), class: "text-dark" do %>
-            <strong style="color: #550000;"><%= user.name %></strong>
-          <% end %>
-        </td>
-        <td><%= user.profile %></td>
-        <td>
-          <% if user.id != current_user.id %>
-            <!--フォローボタン部分テンプレート-->
-            <div id="follow-btn_<%= user.id %>"><%= render 'relationships/follow-btn', user: user %></div>
-          <% end %>
-        </td>
+        <th>Image</th>
+        <th>Name</th>
+        <th>Profile</th>
+        <th></th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% users.each do |user| %>
+        <tr>
+          <td>
+            <%= link_to user_path(user.id) do %>
+              <%= attachment_image_tag user, :profile_image, size: "85x85", fallback: "noimage.3.jpg", class:"rounded-circle"; %>
+            <% end %>
+          </td>
+          <td>
+            <%= link_to user_path(user.id), class: "text-dark" do %>
+              <strong style="color: #550000;"><%= user.name %></strong>
+            <% end %>
+          </td>
+          <td><%= user.profile %></td>
+          <td>
+            <% if user.id != current_user.id %>
+              <!--フォローボタン部分テンプレート-->
+              <div id="follow-btn_<%= user.id %>"><%= render 'relationships/follow-btn', user: user %></div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>

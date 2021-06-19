@@ -9,10 +9,10 @@
       <strong>Name</strong><h2 class="text-break ml-1 p-3"><%= @user.name %></h2>
       <strong>Profile</strong>
       <div class="ml-1 p-3">
-        <%if @user.profile.nil? %>    <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
-          <%=@user.profile%>
+        <% if @user.profile.nil? %>    <!--紹介文が「空」のままだとエラーが出るのでnil?=trueの時を追加-->
+          <%= @user.profile %>
         <% else %>
-          <%=safe_join(@user.profile.split("\n"),tag(:br))%>  <!--この記述によって改行やスペースが表示できる-->
+          <%= safe_join(@user.profile.split("\n"),tag(:br)) %>  <!--この記述によって改行やスペースが表示できる-->
         <% end %>
       </div>
     </div>
@@ -23,7 +23,7 @@
       <div class ="d-flex flex-wrap justify-content-center pt-3">
         <div>favorites <%= link_to @user.favorites.count, user_favorites_path(@user), class: "pr-5" %></div>
         <div>follows <%= link_to @user.followings.count, user_followings_path(@user), class: "pr-5" %></div>
-        <div>followers <%= link_to @user.followers.count, user_followers_path(@user), class: "pr-5"%></div>
+        <div>followers <%= link_to @user.followers.count, user_followers_path(@user), class: "pr-5" %></div>
         <% if @user.id == current_user.id %>
           <%= link_to "Edit", edit_user_path(@user), class: "float-right btn btn-outline-info rounded-pill" %>
         <% else %>

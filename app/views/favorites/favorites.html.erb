@@ -1,24 +1,32 @@
 <h1 class="text-center pt-5">Favorites List</h1>
-<div class="container container-m">
-  <div class="card-deck">
-    <% if @favorites_list.present? %>
+<% if @favorites_list.present? %>
+  <div class="container container-m">
+    <div class="row">
       <% @favorites_list.each do |post| %>
-        <div class="row">
-          <div class="card m-4 shadow-lg">
+        <div class="col-12 col-sm-8 col-md-6 col-lg-4 px-0">
+          <div class="card m-3 shadow-lg">
             <%= link_to post_path(post.id) do %>
-              <%= attachment_image_tag post, :image, :fill, 360, 360 %>
+              <%= attachment_image_tag post, :image, :fill, 360, 360, width: "100%", height: "300" %>
             <% end %>
-            <div class="card-body">
+            <div class="card-body text-break">
               <div class="card-title text-center">
                 <%= link_to(post_path(post.id), class:"text-dark") do %>
-                  <span style="color: #550000;"><strong><%= post.title %></strong></span>
+                  <span style="color: #550000;"><strong style="word-wrap: break-word;"><%= post.title %></strong></span>
                 <% end %>
               </div>
-              <%= attachment_image_tag post.user, :profile_image, :fill, 80, 80, fallback: "noimage.3.jpg", class:"mr-2 rounded-circle"; %>
-              <span><%= post.user.name %></span>
+              <div class="card-text">
+                <div class="row">
+                  <div class ="col-4 px-0">
+                    <%= attachment_image_tag post.user, :profile_image, size: "80x80", fallback: "noimage.3.jpg", class:"mr-2 rounded-circle"; %>
+                  </div>
+                  <div class ="col-8 px-0" style="word-wrap: break-word;">
+                    <%= post.user.name %>
+                  </div>
+                </div>
+              </div>
               <div class="card-text pl-3 pt-2 d-flex">
                 <div id="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></div>
-                <%= link_to(post_path(post.id), class:"comment text-dark pl-2 pr-5") do %>
+                <%= link_to(post_path(post.id), class:"comment text-dark pl-4 pr-5") do %>
                   <div class="comments-count"><span style="color: #550000;"><i class="far fa-comment"></i> <%= post.comments.count %></span></div>
                 <% end %>
                 <%= post.created_at.strftime('%Y/%m/%d') %>
@@ -27,9 +35,10 @@
           </div>
         </div>
       <% end %>
-    <% else %>
-      <strong class="text-center">" No Favorites "</strong>
-    <% end %>
-    <div class="d-flex align-items-end"><%= paginate @favorites_list %></div>
+    </div>
   </div>
-</div>
+<% else %>
+  <strong class="d-flex justify-content-center pt-5">" No Favorites "</strong>
+<% end %>
+<div class="d-flex align-items-end justify-content-center"><%= paginate @favorites_list %></div>
+

@@ -5,10 +5,10 @@
 <div class="container container-m">
   <div class="row">
     <% @ranks.each do |post| %>
-    <div class="col-12 col-sm-8 col-md-6 col-lg-4 px-0">
-      <!--ランキング画像の表示-->
-          <%= image_tag @rank_images_string[@i], :size =>'280x90', class:"ml-5" %>  <!--ここで定義した画像を順番に取ってくる-->
-          <% @i+=1 %>    <!--これがないとずっと0のままになってしまうので+1を定義する-->
+      <div class="col-12 col-sm-8 col-md-6 col-lg-4 px-0">
+        <!--ランキング画像の表示-->
+        <%= image_tag @rank_images_string[@i], :size =>'280x90', class:"ml-4 ml-sm-5" %>  <!--ここで定義した画像を順番に取ってくる-->
+        <% @i+=1 %>    <!--これがないとずっと0のままになってしまうので+1を定義する-->
         <div class="card m-3 shadow-sm">
           <%= link_to post_path(post.id) do %>
             <%= attachment_image_tag post, :image, :fill, 360, 360, width: "100%", height: "300" %>
@@ -32,13 +32,17 @@
             <div class="card-text pl-3 pt-2 d-flex">
               <div id="favorite_<%= post.id %>"><%= render 'favorites/favorite', post: post %></div>
               <%= link_to(post_path(post.id), class:"comment text-dark pl-4 pr-5") do %>
-                <div class="comments-count"><span style="color: #550000;"><i class="far fa-comment"></i> <%= post.comments.count %></span></div>
+                <div class="comments-count">
+                  <span style="color: #550000;">
+                    <i class="far fa-comment"></i> <%= post.comments.count %>
+                  </span>
+                </div>
               <% end %>
               <%= post.created_at.strftime('%Y/%m/%d') %>
             </div>
           </div>
         </div>
-    </div>
+      </div>
     <% end %>
   </div>
 </div>

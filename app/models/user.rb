@@ -23,7 +23,7 @@ class User < ApplicationRecord
   def follow(user_id)
     relationships.create(following_id: user_id)
     return user = User.find(user_id)
-    
+    #24行目だけだとrelationshipsのデータだけを渡してしまうので、returnでユーザーのデータを渡してコントローラーに返す。
   end
 
   def unfollow(user_id)
