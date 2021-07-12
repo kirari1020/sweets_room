@@ -55,7 +55,7 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to posts_path
   end
-  
+
   def correct_post   #URLの直打ち禁止
         @post = Post.find(params[:id])
     unless @post.user.id == current_user.id
@@ -66,7 +66,7 @@ class PostsController < ApplicationController
   private
 
   def post_params
-    params.require(:post).permit(:title, :image, :body, :tag_list, :tag_id)
+    params.require(:post).permit(:title, :image, :body, :tag_list, :tag_id, :address)
   end
 
 end

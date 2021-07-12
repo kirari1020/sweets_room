@@ -13,6 +13,8 @@
           <%= f.text_area :body, class:"form-control", rows:"3", placeholder:"ここに" %>
           <label for="inputImage">Tag</label>
           <%= f.text_field :tag_list, value: @post.tag_list.join(','), class: "form-control", placeholder:"(例)cake,sweets,. . .※半角のカンマで区切る" %>
+          <label for="inputImage">Address</label>
+          <%= f.text_area :address, autofocus: true, class:"form-control", placeholder:"住所や店名をここに" %>
           <hr>
           <%= f.submit 'Update', class:"btn btn-lg btn-block btn-outline-warning mt-4" %>
         <% end %>
@@ -20,3 +22,4 @@
     </div>
   </div>
 </div>
+
