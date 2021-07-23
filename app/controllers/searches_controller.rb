@@ -1,5 +1,5 @@
 class SearchesController < ApplicationController
-  
+
   def search
 		@model = params[:model]
 		@content = params[:content]
@@ -12,5 +12,5 @@ class SearchesController < ApplicationController
 			@records = records.page(params[:page])
 		end
 	end
-	
+
 end
