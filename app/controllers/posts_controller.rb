@@ -2,10 +2,10 @@ class PostsController < ApplicationController
   before_action :correct_post,only: [:edit]  #URLの直打ち禁止
 
   def index
-    @posts = Post.page(params[:page]).reverse_order
-
     if params[:tag_name]
       @posts = Post.tagged_with("#{params[:tag_name]}").page(params[:page]).reverse_order
+    else
+      @posts = Post.page(params[:page]).reverse_order
     end
   end
 
