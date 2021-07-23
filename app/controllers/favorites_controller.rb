@@ -16,7 +16,7 @@ class FavoritesController < ApplicationController
 
   def favorites
     @favorites = Favorite.where(user_id: params[:user_id]).pluck(:post_id)  # ユーザーのお気に入りのpost_idカラムを取得
-    @favorites_list = Post.where(id: @favorites).page(params[:page]).per(9)     # postsテーブルから、お気に入り登録済みのレコードを取得
+    @favorited_posts = Post.where(id: @favorites).page(params[:page]).per(9)     # postsテーブルから、お気に入り登録済みのレコードを取得
   end
 
 end

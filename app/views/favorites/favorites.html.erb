@@ -1,8 +1,8 @@
 <h1 class="text-center pt-5">Favorites List</h1>
-<% if @favorites_list.present? %>
+<% if @favorited_posts.present? %>
   <div class="container container-m">
     <div class="row">
-      <% @favorites_list.each do |post| %>
+      <% @favorited_posts.each do |post| %>
         <div class="col-12 col-sm-8 col-md-6 col-lg-4 px-0">
           <div class="card m-3 shadow-lg">
             <%= link_to post_path(post.id) do %>
@@ -40,5 +40,5 @@
 <% else %>
   <strong class="d-flex justify-content-center pt-5">" No Favorites "</strong>
 <% end %>
-<div class="d-flex align-items-end justify-content-center"><%= paginate @favorites_list %></div>
+<div class="d-flex align-items-end justify-content-center"><%= paginate @favorited_posts %></div>
 
