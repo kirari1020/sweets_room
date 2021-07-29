@@ -19,7 +19,7 @@ class Post < ApplicationRecord
   end
 
   	# [検索方法] 投稿のタイトルと内容（部分一致）
-  def self.search_for(content, method)
+  def self.search_for(content)
       Post.where('title LIKE ? OR body LIKE ?', '%'+content+'%','%'+content+'%')
   end
 
